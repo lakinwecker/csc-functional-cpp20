@@ -1,0 +1,11 @@
+node_modules
+.parcel-cache
+dist
+cpp/build
+cpp/conan
+cpp/compile_commands.json
+cpp/conanbuildinfo.txt
+cpp/conaninfo.txt
+cpp/graph_info.txt
+cpp/poetry.lock
+cpp/conan.lock

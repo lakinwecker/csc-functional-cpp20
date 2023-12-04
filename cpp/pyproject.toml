@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fp-cpp20"
+version = "0.1.0"
+description = ""
+authors = ["Lakin Wecker <lakin@wecker.ca>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+conan = "^1.54.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

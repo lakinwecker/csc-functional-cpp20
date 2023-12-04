@@ -1,0 +1,38 @@
+{
+    "doctest": {
+        "range": "2.x",
+        "current": "2.4.11"
+    },
+    "fmt": {
+        "range": "9.x",
+        "current": "9.1.0"
+    },
+    "immer": {
+        "range": "0.x",
+        "current": "0.8.1"
+    },
+    "lager": {
+        "range": "0.x",
+        "current": "0.1.1"
+    },
+    "zug": {
+        "range": "cci.20220125",
+        "current": "cci.20220125"
+    },
+    "range-v3": {
+        "range": "0.x",
+        "current": "0.12.0"
+    },
+    "dbg-macro": {
+        "range": "0.5.x",
+        "current": "0.5.1"
+    },
+    "tl-expected": {
+        "range": "20190710",
+        "current": "20190710"
+    },
+    "tl-optional": {
+        "range": "1.1.x",
+        "current": "1.1.0"
+    }
+}

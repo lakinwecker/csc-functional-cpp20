@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "exclude": [],
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "types": [],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "dist",
+    "paths": {},
+    "skipLibCheck": true
+  }
+}
