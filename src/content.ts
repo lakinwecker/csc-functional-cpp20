@@ -3,13 +3,16 @@ import * as E from 'fp-ts/Either'
 import * as R from 'fp-ts/Record'
 import * as O from 'fp-ts/Option'
 import * as F from 'fp-ts/function'
-import * as D from './debug'
 import {
   Content,
   ContentSlide,
+  FragmentsSlide,
+  VerticalSlide,
   Slide,
   TitleContent,
-  Code,
+  SubTitleContent,
+  ParagraphContent,
+  Fragment,
   CodeFromFile,
 } from './slides'
 
@@ -24,37 +27,32 @@ export const CodeFromFileOrError =
 export const fpcpp20Slides = (
   files: Record<string, CodeFile>
 ): E.Either<string, Slide[]> => {
-  console.log(files)
+  const codeFromFile = (name: string): Content =>
+    CodeFromFileOrError(files, name)((codeFile) => CodeFromFile(codeFile))
   return E.right([
-    ContentSlide(TitleContent('Hello World')),
-    ContentSlide(
-      Code(
-        'Code',
-        `
-#include <iostream>
-int main() {
-    std::cout << "Hello World" << std::endl;
-}`
-      )
-    ),
-    ContentSlide(
-      CodeFromFileOrError(
-        files,
-        'oop/main.cpp'
-      )((codeFile) => CodeFromFile(codeFile))
-    ),
-    ContentSlide(
-      CodeFromFileOrError(
-        files,
-        'oop/tododriver.h'
-      )((codeFile) => CodeFromFile(codeFile))
-    ),
-    ContentSlide(
-      CodeFromFileOrError(
-        files,
-        'oop/tododriver.cpp'
-      )((codeFile) => CodeFromFile(codeFile))
-    ),
+    ContentSlide(TitleContent('Functional Programming in C++20')),
+    VerticalSlide([
+      ContentSlide(SubTitleContent('What is Functional Programming?')),
+      FragmentsSlide(
+        [
+          Fragment(ParagraphContent('Pure functions')),
+          Fragment(ParagraphContent('Immutability')),
+        ],
+        O.some(SubTitleContent('Functional Programming Style'))
+      ),
+    ]),
+    VerticalSlide([
+      ContentSlide(SubTitleContent("Let's build a TODO app")),
+      ContentSlide(codeFromFile('oop/main.cpp')),
+      ContentSlide(codeFromFile('oop/tododriver.h')),
+      ContentSlide(codeFromFile('oop/tododriver.cpp')),
+    ]),
+    VerticalSlide([
+      ContentSlide(SubTitleContent("Let's build a TODO app")),
+      ContentSlide(codeFromFile('oop/main.cpp')),
+      ContentSlide(codeFromFile('oop/tododriver.h')),
+      ContentSlide(codeFromFile('oop/tododriver.cpp')),
+    ]),
   ])
   //return E.left(`TODO fetch ${files.length} code files`)
 }

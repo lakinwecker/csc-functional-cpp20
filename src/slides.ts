@@ -4,10 +4,18 @@ import * as O from 'fp-ts/Option'
 
 export enum ContentType {
   Title,
+  SubTitle,
+  Paragraph,
   Code,
   CodeFromFile,
   Fragment,
 }
+export type Content =
+  | TitleContent
+  | SubTitleContent
+  | ParagraphContent
+  | Code
+  | CodeFromFile
 
 export type TitleContent = {
   type: ContentType.Title
@@ -16,6 +24,24 @@ export type TitleContent = {
 export const TitleContent = (title: string): TitleContent => ({
   title,
   type: ContentType.Title,
+})
+
+export type SubTitleContent = {
+  type: ContentType.SubTitle
+  title: string
+}
+export const SubTitleContent = (title: string): SubTitleContent => ({
+  title,
+  type: ContentType.SubTitle,
+})
+
+export type ParagraphContent = {
+  type: ContentType.Paragraph
+  content: string
+}
+export const ParagraphContent = (content: string): ParagraphContent => ({
+  content,
+  type: ContentType.Paragraph,
 })
 
 export type Code = {
@@ -49,7 +75,6 @@ export const CodeFromFile = (
 })
 
 // TODO: make it so we can inject other types into this union
-export type Content = TitleContent | Code | CodeFromFile
 export type FragmentTransition =
   | ''
   | 'fade-out'
@@ -77,29 +102,54 @@ export type Fragment = {
   transition: FragmentTransition
 }
 
-export type Slide = {
+export const Fragment = (
+  content: Content,
+  transition: FragmentTransition = ''
+): Fragment => ({
+  type: ContentType.Fragment,
+  content,
+  transition,
+})
+
+export enum SlideType {
+  Single,
+  Vertical,
+}
+
+export type SingleSlide = {
+  type: SlideType.Single
   content: O.Option<Content>
   fragments: O.Option<Fragment[]>
-  subSlides: O.Option<Slide[]>
 }
 export const ContentSlide = (
   content: Content,
-  subSlides: Slide[] = [],
   fragments: O.Option<Fragment[]> = O.none
-): Slide => {
+): SingleSlide => {
   return {
     content: O.some(content),
-    subSlides: O.some(subSlides),
     fragments,
+    type: SlideType.Single,
   }
 }
 
 export const FragmentsSlide = (
   fragments: Fragment[],
-  subSlides: O.Option<Slide[]>,
   content: O.Option<Content>
-): Slide => {
-  return { fragments: O.some(fragments), subSlides, content }
+): SingleSlide => {
+  return { fragments: O.some(fragments), content, type: SlideType.Single }
 }
+
+export type VerticalSlide = {
+  type: SlideType.Vertical
+  slides: SingleSlide[]
+}
+export const VerticalSlide = (slides: SingleSlide[]): VerticalSlide => {
+  return {
+    slides,
+    type: SlideType.Vertical,
+  }
+}
+
+export type Slide = SingleSlide | VerticalSlide
 
 export type Renderer = (slide: Slide) => React.JSX.Element

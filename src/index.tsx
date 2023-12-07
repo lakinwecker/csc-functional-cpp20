@@ -5,7 +5,15 @@ import * as E from 'fp-ts/Either'
 import * as F from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
 import { orEmpty } from './fp'
-import { Slide, ContentType, Content, Fragment, LineSlice } from './slides'
+import {
+  Slide,
+  SlideType,
+  ContentType,
+  Content,
+  Fragment,
+  LineSlice,
+} from './slides'
+import { CodeFileSources } from './codefiles'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
@@ -57,58 +65,45 @@ export const ContentRenderer = (content: Content) => {
           </pre>
         </>
       )
+    case ContentType.SubTitle:
+      return <h3>{content.title}</h3>
+    case ContentType.Paragraph:
+      return <p>{content.content}</p>
     case ContentType.Title:
     default:
-      return <>{content.title}</>
+      return <h2>{content.title}</h2>
   }
 }
 
-export const SlideRenderer = (slide: Slide) => (
-  <section>
-    {F.pipe(
-      slide.content,
-      orEmpty((content) => ContentRenderer(content))
-    )}
-    <>
-      {F.pipe(
-        slide.fragments,
-        orEmpty((fragments) => fragments.map(FragmentRenderer))
-      )}
-    </>
-    {F.pipe(
-      slide.subSlides,
-      orEmpty((subSlides) => subSlides.map(SlideRenderer))
-    )}
-  </section>
-)
+export const SlideRenderer = (slide: Slide) => {
+  switch (slide.type) {
+    case SlideType.Single:
+      return (
+        <section>
+          {F.pipe(
+            slide.content,
+            orEmpty((content) => ContentRenderer(content))
+          )}
+          {F.pipe(
+            slide.fragments,
+            orEmpty((fragments) => fragments.map(FragmentRenderer))
+          )}
+        </section>
+      )
+    case SlideType.Vertical:
+      return <section>{slide.slides.map(SlideRenderer)}</section>
+  }
+}
 
 export const FragmentRenderer = (frag: Fragment) => (
   <p className="fragment {frag.transition}">{ContentRenderer(frag.content)}</p>
 )
-const sources = [
-  {
-    title: 'oop/main.cpp',
-    url: new URL(`../cpp/source/oop/main.cpp`, import.meta.url),
-  },
-  {
-    title: 'oop/tododriver.cpp',
-    url: new URL(`../cpp/source/oop/tododriver.cpp`, import.meta.url),
-  },
-  {
-    title: 'oop/tododriver.h',
-    url: new URL(`../cpp/source/oop/tododriver.h`, import.meta.url),
-  },
-]
-console.log('sources', sources)
-Promise.all(sources.map(getCodeFile)).then((codeFileLists) => {
+Promise.all(CodeFileSources.map(getCodeFile)).then((codeFileLists) => {
   const codeFiles: Record<string, CodeFile> = {}
-  console.log(codeFiles)
   codeFileLists.forEach((cf) => (codeFiles[cf.title] = cf))
-  console.log(codeFiles)
 
   if (container !== null) {
     const root = createRoot(container)
-    console.log(codeFiles)
     const slidesE = fpcpp20Slides(codeFiles)
 
     F.pipe(
