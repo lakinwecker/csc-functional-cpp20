@@ -39,7 +39,9 @@
     },
     "dependencies": {
         "@types/reveal": "^4.2.0",
+        "axios": "^1.6.2",
         "fp-ts": "^2.16.1",
+        "highlight.js": "^11.9.0",
         "io-ts": "^2.2.21",
         "io-ts-types": "^0.5.19",
         "monocle-ts": "^2.3.13",
