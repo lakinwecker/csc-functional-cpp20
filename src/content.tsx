@@ -117,8 +117,8 @@ quicksort (p:xs) =
     VerticalSlide([
       ContentSlide(SubTitleContent('In the OOP style')),
       ContentSlide(codeFromFile('oop/main.cpp')),
-      ContentSlide(codeFromFile('oop/tododriver.h')),
-      ContentSlide(codeFromFile('oop/tododriver.cpp')),
+      ContentSlide(codeFromFile('oop/clidriver.h')),
+      ContentSlide(codeFromFile('oop/clidriver.cpp')),
       ContentSlide(codeFromFile('oop/todomanager.h')),
       ContentSlide(codeFromFile('oop/todomanager.cpp')),
       ContentSlide(

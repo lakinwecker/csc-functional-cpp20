@@ -5,8 +5,8 @@ function (fp_cpp20_declare_lib BASE_DIR)
     # add generated files to library
     add_library(
         fp_cpp20_lib OBJECT
-        "${BASE_DIR}source/oop/tododriver.cpp"
-        "${BASE_DIR}source/oop/tododriver.h"
+        "${BASE_DIR}source/oop/clidriver.cpp"
+        "${BASE_DIR}source/oop/clidriver.h"
         "${BASE_DIR}source/oop/todo.h"
         "${BASE_DIR}source/oop/parser.cpp"
         "${BASE_DIR}source/oop/parser.h"

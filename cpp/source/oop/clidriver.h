@@ -2,7 +2,7 @@
 #include "todomanager.h"
 #include "action.h"
 
-class TodoDriver {
+class CliDriver {
 public:
     auto run() -> int;
     Action getAction();

@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "tododriver.h"
+#include "clidriver.h"
 #include "parser.h"
 
-auto TodoDriver::run() -> int {
+auto CliDriver::run() -> int {
     Action action;
     while (action.type != ActionType::Quit) {
         if (action.type == ActionType::Create) {
@@ -29,7 +29,7 @@ auto TodoDriver::run() -> int {
     return 0;
 }
 
-Action TodoDriver::getAction() {
+Action CliDriver::getAction() {
     std::string commandLine;
     if (std::cin.eof()) {
         return Action{ActionType::Quit, "", 0};
@@ -38,7 +38,7 @@ Action TodoDriver::getAction() {
     return parseAction(commandLine);
 }
 
-void TodoDriver::displayTodos() {
+void CliDriver::displayTodos() {
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << "-----------------------------------------" << std::endl;
@@ -50,7 +50,7 @@ void TodoDriver::displayTodos() {
     }
 }
 
-void TodoDriver::displayHelp() {
+void CliDriver::displayHelp() {
     std::cout << "-----------------------------------------" << std::endl;
     std::cout << "Available commands: " << std::endl;
     std::cout << "create <todo> --> Create a new todo" << std::endl;
