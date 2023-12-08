@@ -7,6 +7,11 @@ function (fp_cpp20_declare_lib BASE_DIR)
         fp_cpp20_lib OBJECT
         "${BASE_DIR}source/oop/tododriver.cpp"
         "${BASE_DIR}source/oop/tododriver.h"
+        "${BASE_DIR}source/oop/todo.h"
+        "${BASE_DIR}source/oop/parser.cpp"
+        "${BASE_DIR}source/oop/parser.h"
+        "${BASE_DIR}source/oop/todomanager.cpp"
+        "${BASE_DIR}source/oop/todomanager.h"
     )
 
     # includes

@@ -4,6 +4,7 @@ import { fpcpp20Slides } from './content'
 import * as E from 'fp-ts/Either'
 import * as F from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
+import * as D from './debug'
 import { orEmpty } from './fp'
 import {
   Slide,
@@ -42,7 +43,7 @@ export const ContentRenderer = (content: Content) => {
         <>
           {content.title}
           <pre>
-            <code data-trim data-noescape data-line-numbers="3-3|2-4">
+            <code data-trim data-noescape>
               {content.code}
             </code>
           </pre>
@@ -69,6 +70,8 @@ export const ContentRenderer = (content: Content) => {
       return <h3>{content.title}</h3>
     case ContentType.Paragraph:
       return <p>{content.content}</p>
+    case ContentType.JSX:
+      return content.content
     case ContentType.Title:
     default:
       return <h2>{content.title}</h2>
@@ -82,10 +85,12 @@ export const SlideRenderer = (slide: Slide) => {
         <section>
           {F.pipe(
             slide.content,
+            D.pp,
             orEmpty((content) => ContentRenderer(content))
           )}
           {F.pipe(
             slide.fragments,
+            D.pp,
             orEmpty((fragments) => fragments.map(FragmentRenderer))
           )}
         </section>

@@ -1,8 +1,14 @@
 #pragma once
+#include "todomanager.h"
+#include "action.h"
 
-namespace fp_cpp20::oop {
 class TodoDriver {
-    public:
-        auto run() -> int;
+public:
+    auto run() -> int;
+    Action getAction();
+    void displayTodos();
+    void displayHelp();
+
+private:
+    TodoManager todoManager;
 };
-}

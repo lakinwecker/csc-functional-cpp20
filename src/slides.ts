@@ -8,6 +8,7 @@ export enum ContentType {
   Paragraph,
   Code,
   CodeFromFile,
+  JSX,
   Fragment,
 }
 export type Content =
@@ -15,6 +16,7 @@ export type Content =
   | SubTitleContent
   | ParagraphContent
   | Code
+  | JSX
   | CodeFromFile
 
 export type TitleContent = {
@@ -42,6 +44,15 @@ export type ParagraphContent = {
 export const ParagraphContent = (content: string): ParagraphContent => ({
   content,
   type: ContentType.Paragraph,
+})
+
+export type JSX = {
+  type: ContentType.JSX
+  content: React.JSX.Element
+}
+export const JSX = (content: React.JSX.Element): JSX => ({
+  content,
+  type: ContentType.JSX,
 })
 
 export type Code = {
@@ -133,10 +144,14 @@ export const ContentSlide = (
 }
 
 export const FragmentsSlide = (
-  fragments: Fragment[],
-  content: O.Option<Content>
+  content: Content,
+  fragments: Fragment[]
 ): SingleSlide => {
-  return { fragments: O.some(fragments), content, type: SlideType.Single }
+  return {
+    fragments: O.some(fragments),
+    content: O.some(content),
+    type: SlideType.Single,
+  }
 }
 
 export type VerticalSlide = {
