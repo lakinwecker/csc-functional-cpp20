@@ -24,9 +24,11 @@ fp_cpp20_find_dependencies_internal()
 fp_cpp20_dependency_targets()
 
 # ---- Declare library ----
+oop_cpp20_declare_lib("")
 fp_cpp20_declare_lib("")
 
 # ---- Declare executable ----
+oop_cpp20_declare_exe("")
 fp_cpp20_declare_exe("")
 
 # ---- Install rules ----
