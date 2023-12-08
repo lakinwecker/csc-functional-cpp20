@@ -64,6 +64,8 @@ auto parseCommand(std::string line) -> tl::expected<todo::Action, std::string> {
                     return todo::DeleteTodo{index};
                 }
             );
+    } else if (command == "undo") {
+        return todo::Undo{};
     }
     return tl::unexpected{std::format("Unknown command: {}", command)};
 }
