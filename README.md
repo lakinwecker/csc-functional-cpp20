@@ -46,3 +46,17 @@ Note that you'll need to match up the build directory to your preset.
 Run the apps:
 `./build/dev-unix/fp_cpp20`
 `./build/dev-unix/oop_cpp20`
+
+
+## Resources
+- [Domain Modeling Made Functional - Scott Wlaschin - KanDDDinsky 2019](https://www.youtube.com/watch?v=2JB1_e5wZmU)
+- [Why Functional Programming matters](https://www.cse.chalmers.se/~rjmh/Papers/whyfp.pdf)
+- [Grokking simplicity](https://www.manning.com/books/grokking-simplicity)
+- [Functional Programming in C++](https://www.manning.com/books/functional-programming-in-c-plus-plus)
+- [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala)
+- [What if the user was a function - Slides](https://speakerdeck.com/staltz/what-if-the-user-was-a-function)
+- [What if he user was a function - Video](https://youtu.be/1zj7M1LnJV4?feature=shared)
+- [WalletFox Ranges Quick Reference](https://www.walletfox.com/course/quickref_range_v3.php)
+- [Ranges-v3](https://github.com/ericniebler/range-v3)
+- [immer](https://github.com/arximboldi/immer)
+- [lager](https://github.com/arximboldi/lager)
