@@ -3,24 +3,25 @@
 #include <lager/store.hpp>
 #include <lager/event_loop/manual.hpp>
 
+#include "undo.h"
 #include "todos.h"
 #include "parser.h"
 
 int main() {
     // Create the data store with the initial model
-    auto store = lager::make_store<todo::Action>(
-        todo::Model{},
+    auto store = lager::make_store<undo::Action<todo::Action>>(
+        undo::Model<todo::Model>{},
         lager::with_manual_event_loop{});
 
     // Show the initial view
-    std::cout << todo::view(store.get()) << std::endl;
+    std::cout << undo::view(store.get()) << std::endl;
 
     // Tell lager to watch the store and when it changes
     // to update the view
     watch(
         store,
         [](auto model) {
-            std::cout << todo::view(model) << std::endl;
+            std::cout << undo::view(model) << std::endl;
         }
     );
 

@@ -2,6 +2,7 @@
 #include <string>
 #include <tl/expected.hpp>
 
+#include "undo.h"
 #include "todos.h"
 
 auto strToSizeT(std::string const & str)
@@ -9,4 +10,4 @@ auto strToSizeT(std::string const & str)
 auto takeFirstWord(std::string line)
     -> std::tuple<std::string, std::string>;
 auto parseCommand(std::string line)
-    -> tl::expected<todo::Action, std::string>;
+    -> tl::expected<undo::Action<todo::Action>, std::string>;

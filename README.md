@@ -46,4 +46,3 @@ Note that you'll need to match up the build directory to your preset.
 Run the apps:
 `./build/dev-unix/fp_cpp20`
 `./build/dev-unix/oop_cpp20`
-

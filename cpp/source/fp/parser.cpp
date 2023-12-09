@@ -38,7 +38,8 @@ auto strToSizeT(std::string const & str)
     }
 }
 
-auto parseCommand(std::string line) -> tl::expected<todo::Action, std::string> {
+auto parseCommand(std::string line)
+    -> tl::expected<undo::Action<todo::Action>, std::string> {
     auto [command, theRest] = takeFirstWord(line);
 
     command = command
@@ -66,7 +67,7 @@ auto parseCommand(std::string line) -> tl::expected<todo::Action, std::string> {
                 }
             );
     } else if (command == "undo") {
-        return todo::Undo{};
+        return undo::Undo{};
     }
     return tl::unexpected{std::format("Unknown command: {}", command)};
 }
