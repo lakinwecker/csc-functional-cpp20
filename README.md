@@ -60,3 +60,6 @@ Run the apps:
 - [Ranges-v3](https://github.com/ericniebler/range-v3)
 - [immer](https://github.com/arximboldi/immer)
 - [lager](https://github.com/arximboldi/lager)
+- [tl-expected](https://github.com/TartanLlama/expected)
+- [tl-optional](https://github.com/TartanLlama/optional)
+- [A large list of resources for Functional Programming in C++](https://github.com/graninas/cpp_functional_programming)
