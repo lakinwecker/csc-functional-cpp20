@@ -43,7 +43,13 @@ export const ContentRenderer = (content: Content) => {
         <>
           {content.title}
           <pre>
-            <code data-trim data-noescape>
+            <code
+              data-trim
+              data-noescape
+              data-line-numbers={lineSliceFocusesToReveal(
+                content.lineSliceFocuses
+              )}
+            >
               {content.code}
             </code>
           </pre>

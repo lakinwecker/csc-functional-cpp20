@@ -59,10 +59,16 @@ export type Code = {
   type: ContentType.Code
   title: string
   code: string
+  lineSliceFocuses: O.Option<LineSlice[]>
 }
-export const Code = (title: string, code: string): Code => ({
+export const Code = (
+  title: string,
+  code: string,
+  lineSliceFocuses: O.Option<LineSlice[]> = O.none
+): Code => ({
   title,
   code,
+  lineSliceFocuses,
   type: ContentType.Code,
 })
 

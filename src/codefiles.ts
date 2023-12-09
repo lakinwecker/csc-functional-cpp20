@@ -27,12 +27,16 @@ export const CodeFileSources = [
     url: new URL(`../cpp/source/fp/parser.cpp`, import.meta.url),
   },
   {
-    title: 'fp/action.cpp',
-    url: new URL(`../cpp/source/fp/action.cpp`, import.meta.url),
+    title: 'fp/main.cpp',
+    url: new URL(`../cpp/source/fp/main.cpp`, import.meta.url),
   },
   {
-    title: 'fp/action.h',
-    url: new URL(`../cpp/source/fp/action.h`, import.meta.url),
+    title: 'fp/todos.cpp',
+    url: new URL(`../cpp/source/fp/todos.cpp`, import.meta.url),
+  },
+  {
+    title: 'fp/todos.h',
+    url: new URL(`../cpp/source/fp/todos.h`, import.meta.url),
   },
 ]
 export const mementoPatternJpg = new URL(

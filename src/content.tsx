@@ -155,19 +155,95 @@ quicksort (p:xs) =
     ]),
     ContentSlide(SubTitleContent('In the FP style')),
     VerticalSlide([
-      ContentSlide(SubTitleContent('Trailing Return Types')),
-      ContentSlide(codeFromFile('oop/parser.h', O.some([[6, 6]]))),
-      ContentSlide(codeFromFile('fp/parser.h', O.some([[6, 6]]))),
+      ContentSlide(SubTitleContent('Syntax Preliminaries')),
+      FragmentsSlide(SubTitleContent('Trailing Return Types'), [
+        Fragment(
+          Code(
+            '',
+            `
+// Traditional return types
+int add2(int x) { return x + 2; }
+
+// Trailing return types
+auto add2(int x) -> int { return x + 2; }
+`,
+            O.some([
+              [1, 2],
+              [4, 5],
+            ])
+          )
+        ),
+      ]),
+      FragmentsSlide(SubTitleContent('Function Syntax'), [
+        Fragment(
+          Code(
+            '',
+            `
+// Functions defined at the top level scope
+auto add2(int x) -> int { return x + 2; }
+
+// Lambda syntax
+auto add2 = [](int x) -> int { return x + 2; };
+`,
+            O.some([
+              [1, 2],
+              [4, 5],
+            ])
+          )
+        ),
+      ]),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('Ranges-v3')),
-      ContentSlide(codeFromFile('fp/parser.cpp', O.some([[8, 14]]))),
+      FragmentsSlide(SubTitleContent('Pipes'), [
+        Fragment(
+          Code(
+            '',
+            `
+#include <range/v3/all.hpp>
+#include <vector>
+
+int main() {
+    // And assuming we have a list of ints
+    std::vector<int> ints = {1, 2, 3, 4, 5};
+
+    // And a function that squares ints
+    auto square = [](int x ){ return x * x; };
+
+    // We can use ranges with the pipe operator to transform them
+    std::vector<int> strings = ints
+        | ranges::view::transform(square)
+        | ranges::to_vector;
+
+    return 0;
+}
+`,
+            O.some([
+              [1, 1],
+              [5, 6],
+              [8, 9],
+              [11, 14],
+            ])
+          )
+        ),
+      ]),
+      ContentSlide(
+        codeFromFile(
+          'fp/parser.cpp',
+          O.some([
+            [2, 2],
+            [8, 8],
+            [9, 13],
+            [15, 21],
+          ])
+        )
+      ),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('std::variant / std::visit')),
       ContentSlide(
         codeFromFile(
-          'fp/action.h',
+          'fp/model.h',
           O.some([
             [3, 3],
             [6, 10],
@@ -179,10 +255,6 @@ quicksort (p:xs) =
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('tl::expected, tl::optional')),
-      ContentSlide(codeFromFile('fp/errors.cpp')),
-    ]),
-    VerticalSlide([
-      ContentSlide(SubTitleContent('std::bind,std::function')),
       ContentSlide(codeFromFile('fp/errors.cpp')),
     ]),
     VerticalSlide([
