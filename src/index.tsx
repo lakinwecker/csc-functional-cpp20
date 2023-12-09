@@ -18,6 +18,7 @@ import { CodeFileSources } from './codefiles'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+
 const container = document.getElementById('app')
 
 export const SlideErrorRenderer = (error: String) => (
@@ -88,7 +89,7 @@ export const SlideRenderer = (slide: Slide) => {
   switch (slide.type) {
     case SlideType.Single:
       return (
-        <section>
+        <section className={slide.className}>
           {F.pipe(
             slide.content,
             D.pp,
@@ -102,12 +103,18 @@ export const SlideRenderer = (slide: Slide) => {
         </section>
       )
     case SlideType.Vertical:
-      return <section>{slide.slides.map(SlideRenderer)}</section>
+      return (
+        <section /*className={slide.className}*/>
+          {slide.slides.map(SlideRenderer)}
+        </section>
+      )
   }
 }
 
 export const FragmentRenderer = (frag: Fragment) => (
-  <p className="fragment {frag.transition}">{ContentRenderer(frag.content)}</p>
+  <p className={`fragment ${frag.transition}`}>
+    {ContentRenderer(frag.content)}
+  </p>
 )
 Promise.all(CodeFileSources.map(getCodeFile)).then((codeFileLists) => {
   const codeFiles: Record<string, CodeFile> = {}

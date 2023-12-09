@@ -4,8 +4,6 @@
 
 class TodoManager {
 public:
-    auto run() -> int;
-
     // CRUD
 
     // Create

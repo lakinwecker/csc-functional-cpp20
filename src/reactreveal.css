@@ -5,6 +5,23 @@
 body {
   background-color: #282a36;
 }
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+footer img.github {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -12,6 +29,63 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.logo {
+  margin: 15px;
+  width: 30%;
+}
+
+.sa-logo {
+  background: #343333;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 0;
+}
+
+.sa img {
+  width: 150px;
+}
+
+.uofc-logo {
+  background: #1f1f1f;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 0;
+}
+
+.uofc-logo img {
+  width: 200px;
+}
+
+.vt-logo {
+  background: #17173a;
+  border-radius: 10px;
+  padding: 10px 75px;
+  display: inline-block;
+  font-size: 0;
+}
+
+.vt-logo img {
+  width: 100px;
+}
+
+.bg-logo {
+  background: #14161d;
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: inline-block;
+  font-size: 0;
+}
+.bg-logo img {
+  width: 300px;
+}
+
 .loader {
   margin: auto;
   width: 480px;

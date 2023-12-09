@@ -7,7 +7,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "compile": "tsc",
-        "run:dev": "parcel src/**/*"
+        "run:dev": "parcel --host 0.0.0.0 src/**/*",
+        "qrcode": "node src/qrcode.js"
     },
     "keywords": [],
     "author": "",
@@ -46,6 +47,7 @@
         "io-ts-types": "^0.5.19",
         "monocle-ts": "^2.3.13",
         "newtype-ts": "^0.3.5",
+        "qrcode": "^1.5.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "reveal.js": "^5.0.2"

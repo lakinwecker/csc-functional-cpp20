@@ -30,6 +30,51 @@ export const CodeFromFileOrError =
       O.fold<CodeFile, Content>(() => TitleContent(`ERROR loading: ${name}`), f)
     )
 
+const iFrag = (
+  url: URL,
+  index: number | undefined = undefined,
+  width: number | undefined = undefined
+) => (
+  <img
+    className="fragment fade-in-then-out"
+    data-fragment-index={index}
+    src={url.toString()}
+    width={width}
+    alt=""
+  />
+)
+
+const mutationSlide = ContentSlide(
+  JSX(
+    <>
+      <h3>Mutation</h3>
+      <h4>Changing Values</h4>
+      <div className="r-stack">
+        {iFrag(I.immutable0, 0, 400)}
+        {iFrag(I.immutable1, undefined, 400)}
+        {iFrag(I.immutable2, undefined, 400)}
+        {iFrag(I.immutable3, undefined, 400)}
+        {iFrag(I.immutable4, undefined, 400)}
+      </div>
+    </>
+  )
+)
+const immutabilitySlide = ContentSlide(
+  JSX(
+    <>
+      <h3>Immutability</h3>
+      <h4>Copying Values</h4>
+      <div className="r-stack">
+        {iFrag(I.immutable5, 0, 400)}
+        {iFrag(I.immutable6, undefined, 400)}
+        {iFrag(I.immutable7, undefined, 400)}
+        {iFrag(I.immutable8, undefined, 400)}
+        {iFrag(I.immutable9, undefined, 400)}
+      </div>
+    </>
+  )
+)
+
 export const fpcpp20Slides = (
   files: Record<string, CodeFile>
 ): E.Either<string, Slide[]> => {
@@ -53,7 +98,63 @@ export const fpcpp20Slides = (
       )
     ),
     VerticalSlide([
+      ContentSlide(
+        JSX(
+          <>
+            <h3>About Me</h3>
+            <div className="logos">
+              <div className="logo sa-logo">
+                <a href="https://www.structuredabstraction.com/">
+                  <img
+                    src="https://www.structuredabstraction.com/static/website/images/logo.svg"
+                    alt="Structured Abstraction Logo"
+                  />
+                </a>
+              </div>
+              <div className="logo uofc-logo">
+                <a href="https://pages.cpsc.ucalgary.ca/~samavati/">
+                  <img
+                    src="https://www.ucalgary.ca/sites/default/files/styles/ucws_image_desktop/public/2019-10/UCalgary_Horizontal_logo_colour_BlackBackground.webp?itok=q4Jp3h7j"
+                    alt="University of Calgary Logo"
+                  />
+                </a>
+              </div>
+              <div className="logo vt-logo">
+                <a href="https://www.vividtheory.com/">
+                  <img
+                    src="https://vividtheory.com/_next/image?url=%2Fassets%2Flogos%2Fvivid-theory-logo-white.png&w=128&q=75"
+                    alt="Vivid Theory Logo"
+                  />
+                </a>
+              </div>
+              <div className="logo bg-logo">
+                <a href="https://www.biggeo.com/">
+                  <img
+                    src="https://assets-global.website-files.com/6345ad9c87035c200bff8d84/65501e2c308e88ddc8140c09_Type%3DWhite%20%26%20Default%2C%20Variant%3DHorizontal.svg"
+                    alt="BigGeo Logo"
+                  />
+                </a>
+              </div>
+            </div>
+          </>
+        )
+      ),
+    ]),
+    VerticalSlide([
       ContentSlide(SubTitleContent('What is Functional Programming?')),
+      ContentSlide(
+        Code(
+          "We're not playing code golf!",
+          `quicksort :: Ord a => [a] -> [a]
+quicksort []     = []
+quicksort (p:xs) =
+    (quicksort lesser) ++ [p] ++ (quicksort greater)
+    where
+        lesser  = filter (< p) xs
+        greater = filter (>= p) xs
+`
+        )
+      ),
       FragmentsSlide(SubTitleContent('Functional Programming Style'), [
         Fragment(
           JSX(
@@ -66,7 +167,33 @@ export const fpcpp20Slides = (
             </>
           )
         ),
-        Fragment(JSX(<blockquote>Avoid mutation and side effects</blockquote>)),
+        Fragment(
+          JSX(
+            <>
+              Avoid <strong>mutation</strong> and <strong>side effects</strong>
+            </>
+          )
+        ),
+      ]),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>Side Effects</h3>
+            <h4>Functions as Pipes</h4>
+            <div className="r-stack">
+              {iFrag(I.sideEffects0, 0, 300)}
+              {iFrag(I.sideEffects1, undefined, 400)}
+              {iFrag(I.sideEffects2, undefined, 400)}
+              {iFrag(I.sideEffects3, undefined, 400)}
+              {iFrag(I.sideEffects4, undefined, 400)}
+              {iFrag(I.sideEffects5, undefined, 600)}
+            </div>
+          </>
+        )
+      ),
+      mutationSlide,
+      immutabilitySlide,
+      FragmentsSlide(SubTitleContent('Functional Programming Style in C++'), [
         Fragment(
           JSX(
             <>
@@ -81,28 +208,15 @@ export const fpcpp20Slides = (
             </>
           )
         ),
+        Fragment(
+          JSX(
+            <p>
+              We're going to talk about <strong>C++'s support</strong> for
+              functional programming style
+            </p>
+          )
+        ),
       ]),
-      ContentSlide(
-        JSX(
-          <p>
-            We're going to talk about <strong>C++'s support</strong> for
-            functional programming style
-          </p>
-        )
-      ),
-      ContentSlide(
-        Code(
-          "We're not playing code golf!",
-          `quicksort :: Ord a => [a] -> [a]
-quicksort []     = []
-quicksort (p:xs) =
-    (quicksort lesser) ++ [p] ++ (quicksort greater)
-    where
-        lesser  = filter (< p) xs
-        greater = filter (>= p) xs
-`
-        )
-      ),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent("Let's build a CLI TODO app")),
@@ -117,10 +231,61 @@ quicksort (p:xs) =
     VerticalSlide([
       ContentSlide(SubTitleContent('In the OOP style')),
       ContentSlide(codeFromFile('oop/main.cpp')),
-      ContentSlide(codeFromFile('oop/clidriver.h')),
-      ContentSlide(codeFromFile('oop/clidriver.cpp')),
-      ContentSlide(codeFromFile('oop/todomanager.h')),
-      ContentSlide(codeFromFile('oop/todomanager.cpp')),
+      ContentSlide(
+        codeFromFile(
+          'oop/clidriver.h',
+          O.some([
+            [5, 5],
+            [7, 10],
+            [9, 10],
+            [13, 13],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'oop/clidriver.cpp',
+          O.some([
+            [6, 6],
+            [7, 8],
+            [9, 10],
+            [11, 12],
+            [13, 14],
+            [15, 16],
+            [17, 18],
+            [21, 21],
+            [21, 21],
+            [22, 26],
+            [32, 38],
+            [41, 51],
+            [53, 60],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'oop/todomanager.h',
+          O.some([
+            [5, 5],
+            [9, 18],
+            [12, 12],
+            [21, 21],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'oop/todomanager.cpp',
+          O.some([
+            [5, 9],
+            [10, 13],
+            [15, 20],
+            [21, 28],
+            [30, 33],
+          ])
+        )
+      ),
+      mutationSlide,
       ContentSlide(
         JSX(
           <>
@@ -156,16 +321,46 @@ quicksort (p:xs) =
     ContentSlide(SubTitleContent('In the FP style')),
     VerticalSlide([
       ContentSlide(SubTitleContent('Syntax Preliminaries')),
+      FragmentsSlide(SubTitleContent('Traditional Return Types'), [
+        Fragment(
+          Code(
+            '',
+            `
+// Traditional return types
+int square(int x) { return x * x; }
+`,
+            O.some([[1, 2]])
+          )
+        ),
+      ]),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>Functions as Pipes</h3>
+            <div className="r-stack">
+              {iFrag(I.sideEffects0, 0, 400)}
+              {iFrag(I.pipes1, undefined, 400)}
+              {iFrag(I.pipes0, undefined, 400)}
+              {iFrag(I.pipes2, undefined, 400)}
+              {iFrag(I.pipes3, undefined, 400)}
+              {iFrag(I.pipes4, undefined, 400)}
+              {iFrag(I.pipes5, undefined, 600)}
+              {iFrag(I.pipes6, undefined, 500)}
+              {iFrag(I.pipes1, undefined, 400)}
+            </div>
+          </>
+        )
+      ),
       FragmentsSlide(SubTitleContent('Trailing Return Types'), [
         Fragment(
           Code(
             '',
             `
 // Traditional return types
-int add2(int x) { return x + 2; }
+int square(int x) { return x * x; }
 
 // Trailing return types
-auto add2(int x) -> int { return x + 2; }
+auto square(int x) -> int { return x * x; }
 `,
             O.some([
               [1, 2],
@@ -195,12 +390,33 @@ auto add2 = [](int x) -> int { return x + 2; };
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('Ranges-v3')),
-      FragmentsSlide(SubTitleContent('Pipes'), [
+      FragmentsSlide(SubTitleContent('Pipes Again!'), [
+        Fragment(JSX(<img src={I.pipes6.toString()} width={500} alt="" />)),
+        Fragment(JSX(<img src={I.pipes7.toString()} width={500} alt="" />)),
         Fragment(
           Code(
             '',
             `
-#include <range/v3/all.hpp>
+y = x |> f |> g
+`
+          )
+        ),
+        Fragment(
+          Code(
+            '',
+            `
+#!/bin/bash
+cat code.cpp | grep "#include" | wc --lines
+`
+          )
+        ),
+      ]),
+      FragmentsSlide(SubTitleContent('std::ranges Pipes'), [
+        Fragment(
+          Code(
+            'C++20 ranges',
+            `
+#include <ranges>
 #include <vector>
 
 int main() {
@@ -212,8 +428,8 @@ int main() {
 
     // We can use ranges with the pipe operator to transform them
     std::vector<int> strings = ints
-        | ranges::view::transform(square)
-        | ranges::to_vector;
+        | std::views::transform(square)
+        | ranges::to<std::vector>;
 
     return 0;
 }
@@ -228,16 +444,53 @@ int main() {
         ),
       ]),
       ContentSlide(
+        JSX(
+          <>
+            <h3>Ranges-v3</h3>
+            <p className="fragment fade-in">
+              <a href="https://ericniebler.github.io/range-v3/">Ranges</a> are
+              an extension of the Standard Template Library that makes its
+              iterators and algorithms more powerful by making them{' '}
+              <strong>composable</strong>.
+            </p>
+            <p className="fragment fade-in">
+              The default{' '}
+              <a href="https://ericniebler.github.io/range-v3/">
+                Documentation for Ranges v3
+              </a>{' '}
+              is not as good as I'd like. There are better ones out there, like
+              this{' '}
+              <a href="https://www.walletfox.com/course/quickref_range_v3.php">
+                quick reference by walletfox
+              </a>
+            </p>
+          </>
+        )
+      ),
+      ContentSlide(
         codeFromFile(
           'fp/parser.cpp',
           O.some([
             [2, 2],
             [8, 8],
             [9, 13],
-            [15, 21],
           ])
         )
       ),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>RX-Marbles</h3>
+            <p>
+              <a href="https://rxmarbles.com/#takeWhile">takeWhile example</a>
+            </p>
+            <p>
+              <a href="https://rxmarbles.com/#skipWhile">skipWhile example</a>
+            </p>
+          </>
+        )
+      ),
+      ContentSlide(codeFromFile('fp/parser.cpp', O.some([[15, 21]]))),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('std::variant / std::visit')),
@@ -264,6 +517,25 @@ int main() {
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('Undo!')),
+      ContentSlide(codeFromFile('fp/model.cpp')),
+    ]),
+    VerticalSlide([
+      ContentSlide(
+        JSX(
+          <>
+            <h3>Thank you!</h3>
+            <p>Any Question?</p>
+            <p>
+              <a href="https://github.com/lakinwecker/csc-functional-cpp20">
+                Source Code
+              </a>
+            </p>
+            <p>
+              <img src={I.qrCode.toString()} />
+            </p>
+          </>
+        )
+      ),
       ContentSlide(codeFromFile('fp/model.cpp')),
     ]),
   ])

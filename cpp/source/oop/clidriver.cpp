@@ -42,7 +42,7 @@ void CliDriver::displayTodos() {
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << "-----------------------------------------" << std::endl;
-    std::cout << "TODO Manager 0.1 (my little pony edition)" << std::endl;
+    std::cout << "TODO Manager 0.1 (OOP edition)" << std::endl;
     size_t id = 0;
     for (auto const & todo : todoManager.getTodos()) {
         std::cout << " * (id: " << id << ") " << todo.getName() << std::endl;

@@ -137,26 +137,31 @@ export type SingleSlide = {
   type: SlideType.Single
   content: O.Option<Content>
   fragments: O.Option<Fragment[]>
+  className: string
 }
 export const ContentSlide = (
   content: Content,
-  fragments: O.Option<Fragment[]> = O.none
+  fragments: O.Option<Fragment[]> = O.none,
+  className = ''
 ): SingleSlide => {
   return {
     content: O.some(content),
     fragments,
     type: SlideType.Single,
+    className,
   }
 }
 
 export const FragmentsSlide = (
   content: Content,
-  fragments: Fragment[]
+  fragments: Fragment[],
+  className = ''
 ): SingleSlide => {
   return {
     fragments: O.some(fragments),
     content: O.some(content),
     type: SlideType.Single,
+    className,
   }
 }
 

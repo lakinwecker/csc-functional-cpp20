@@ -2,6 +2,7 @@
 #include <iterator>
 #include <iostream>
 
+//Create
 void TodoManager::createTodo(std::string const &name) {
     todos.emplace_back(name);
 }
@@ -15,7 +16,6 @@ std::vector<Todo> const &TodoManager::getTodos() const {
 void TodoManager::updateTodo(size_t i, std::string name) {
     if (i < todos.size())
         todos[i].setName(name);
-
 }
 
 // Delete
@@ -25,7 +25,6 @@ void TodoManager::deleteTodo(size_t i) {
         std::advance(location, i);
         todos.erase(location);
     }
-
 }
 
 // Undo
