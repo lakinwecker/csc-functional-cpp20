@@ -109,6 +109,26 @@ export const immutable6 = new URL(`../static/immutable-6.png`, import.meta.url)
 export const immutable7 = new URL(`../static/immutable-7.png`, import.meta.url)
 export const immutable8 = new URL(`../static/immutable-8.png`, import.meta.url)
 export const immutable9 = new URL(`../static/immutable-9.png`, import.meta.url)
+export const immutable10 = new URL(
+  `../static/immutable-10.png`,
+  import.meta.url
+)
+export const immutable11 = new URL(
+  `../static/immutable-11.png`,
+  import.meta.url
+)
+export const immutable12 = new URL(
+  `../static/immutable-12.png`,
+  import.meta.url
+)
+export const immutable13 = new URL(
+  `../static/immutable-13.png`,
+  import.meta.url
+)
+export const immutable14 = new URL(
+  `../static/immutable-14.png`,
+  import.meta.url
+)
 
 export const unidirectional0 = new URL(
   `../static/UnidirectionalDataFlow-0.png`,

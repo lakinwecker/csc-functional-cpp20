@@ -75,6 +75,22 @@ const immutabilitySlide = ContentSlide(
   )
 )
 
+const immerSlide = ContentSlide(
+  JSX(
+    <>
+      <h3>Immutability (with Immer)</h3>
+      <h4>Copying (some values)</h4>
+      <div className="r-stack">
+        {iFrag(I.immutable10, 0, 400)}
+        {iFrag(I.immutable11, undefined, 400)}
+        {iFrag(I.immutable12, undefined, 400)}
+        {iFrag(I.immutable13, undefined, 400)}
+        {iFrag(I.immutable14, undefined, 400)}
+      </div>
+    </>
+  )
+)
+
 export const fpcpp20Slides = (
   files: Record<string, CodeFile>
 ): E.Either<string, Slide[]> => {
@@ -226,6 +242,15 @@ quicksort (p:xs) =
         Fragment(JSX(<p>Update Todo</p>)),
         Fragment(JSX(<p>Delete Todo</p>)),
         Fragment(JSX(<p>Undo</p>)),
+        Fragment(
+          JSX(
+            <p>
+              And you'll notice that the way we do this in C++ is{' '}
+              <strong>very</strong> similar to how you do it in React, or
+              Svelte, or Vue or Angular.
+            </p>
+          )
+        ),
       ]),
     ]),
     VerticalSlide([
@@ -636,6 +661,7 @@ int main() {
           </>
         )
       ),
+      immerSlide,
     ]),
     VerticalSlide([
       ContentSlide(
@@ -741,7 +767,7 @@ int main() {
         JSX(
           <>
             <h3>Thank you!</h3>
-            <p>Any Question?</p>
+            <p>Any Questions?</p>
             <p>
               <a href="https://github.com/lakinwecker/csc-functional-cpp20">
                 Source Code
