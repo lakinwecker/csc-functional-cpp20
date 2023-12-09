@@ -46,6 +46,14 @@ export const CodeFileSources = [
     title: 'fp/todos.h',
     url: new URL(`../cpp/source/fp/todos.h`, import.meta.url),
   },
+  {
+    title: 'fp/todos-v1.cpp',
+    url: new URL(`../cpp/source/fp/todos-v1.cpp`, import.meta.url),
+  },
+  {
+    title: 'fp/todos-v1.h',
+    url: new URL(`../cpp/source/fp/todos-v1.h`, import.meta.url),
+  },
 ]
 export const mementoPatternJpg = new URL(
   `../static/memento.jpg`,
@@ -101,3 +109,21 @@ export const immutable6 = new URL(`../static/immutable-6.png`, import.meta.url)
 export const immutable7 = new URL(`../static/immutable-7.png`, import.meta.url)
 export const immutable8 = new URL(`../static/immutable-8.png`, import.meta.url)
 export const immutable9 = new URL(`../static/immutable-9.png`, import.meta.url)
+
+export const unidirectional0 = new URL(
+  `../static/UnidirectionalDataFlow-0.png`,
+  import.meta.url
+)
+export const unidirectional1 = new URL(
+  `../static/UnidirectionalDataFlow-1.png`,
+  import.meta.url
+)
+export const unidirectional2 = new URL(
+  `../static/UnidirectionalDataFlow-2.png`,
+  import.meta.url
+)
+
+export const unidirectional3 = new URL(
+  `../static/UnidirectionalDataFlow-3.png`,
+  import.meta.url
+)

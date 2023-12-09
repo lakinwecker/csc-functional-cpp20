@@ -495,29 +495,224 @@ int main() {
     VerticalSlide([
       ContentSlide(SubTitleContent('std::variant / std::visit')),
       ContentSlide(
+        Code(
+          '',
+          `
+#include <variant>
+#include <string>
+#include <lager/util.hpp>
+
+ // And a function that print either an int or a string
+auto displayValue(std::variant<int, std::string> x) -> void {
+    std::visit(lager::visitor{
+        [](int arg) {
+            std::cout << "this is an int: " << arg << ' ';
+        },
+        [](const std::string& arg) {
+            std::cout << "this is a string: "std::quoted(arg) << ' ';
+        }
+    }, x);
+};
+
+int main() {
+    displayValue(1);
+    displayValue("Lakin Wecker");
+
+    return 0;
+}
+`,
+          O.some([
+            [1, 1],
+            [3, 3],
+            [6, 6],
+            [7, 14],
+            [18, 19],
+          ])
+        )
+      ),
+      ContentSlide(
         codeFromFile(
-          'fp/model.h',
+          'fp/todos.h',
           O.some([
             [3, 3],
             [6, 10],
             [12, 16],
+            [30, 30],
           ])
         )
       ),
-      ContentSlide(codeFromFile('fp/model.cpp')),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('tl::expected, tl::optional')),
-      ContentSlide(codeFromFile('fp/errors.cpp')),
+      ContentSlide(SubTitleContent('tl::expected')),
+      ContentSlide(
+        codeFromFile(
+          'fp/parser.h',
+          O.some([
+            [3, 3],
+            [7, 8],
+            [8, 8],
+            [12, 12],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'fp/parser.cpp',
+          O.some([
+            [27, 39],
+            [33, 34],
+            [36, 37],
+            [53, 58],
+          ])
+        )
+      ),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('immer / lager')),
-      ContentSlide(codeFromFile('fp/model.cpp')),
-      ContentSlide(codeFromFile('fp/main.cpp')),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>immer</h3>
+            <p dir="auto">
+              <a href="https://github.com/arximboldi/immer">
+                <strong>immer</strong>
+              </a>{' '}
+              is a library of{' '}
+              <a
+                href="https://en.wikipedia.org/wiki/Persistent_data_structure"
+                rel="nofollow"
+              >
+                persistent
+              </a>{' '}
+              and{' '}
+              <a
+                href="https://en.wikipedia.org/wiki/Immutable_object"
+                rel="nofollow"
+              >
+                immutable
+              </a>{' '}
+              data structures written in C++. These enable whole new kinds of
+              architectures for interactive and concurrent programs of striking
+              simplicity, correctness, and performance.
+            </p>
+          </>
+        )
+      ),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>immer</h3>
+            <p className="fragment">
+              Instead of mutating them <strong>in place</strong>, they provide
+              manipulation functions that{' '}
+              <em>return a new transformed value</em>.
+            </p>
+            <p className="fragment">
+              Leaves the original value <strong>unaltered</strong>. In the
+              context of data-structures, this property of preserving old values
+              is called <strong>persistence</strong>.
+            </p>
+          </>
+        )
+      ),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>immer</h3>
+            <p className="fragment">
+              Most of these containers use data-structures in which these
+              operations can be done <strong>efficiently</strong>.
+            </p>
+            <p className="fragment">
+              {' '}
+              In particular, <strong>not all data is copied</strong> when a new
+              value is produced.
+            </p>
+            <p className="fragment">
+              Instead, the new values <strong>may share common data</strong>{' '}
+              with other objects. We sometimes refer to this property as{' '}
+              <strong>structural sharing</strong>. This behaviour is transparent
+              to the user.
+            </p>
+          </>
+        )
+      ),
+    ]),
+    VerticalSlide([
+      ContentSlide(
+        JSX(
+          <>
+            <h3>lager</h3>
+            <p>
+              <a href="https://github.com/arximboldi/lager">Lager</a> is a C++
+              library for <strong>value-oriented</strong> design using the{' '}
+              <strong>unidirectional data-flow architecture</strong> —{' '}
+              <strong>Redux</strong> for C++
+            </p>
+          </>
+        )
+      ),
+      ContentSlide(
+        JSX(
+          <>
+            <h3>Unidirectional Data-Flow</h3>
+            <div className="r-stack">
+              {iFrag(I.unidirectional0, 0, 800)}
+              {iFrag(I.unidirectional1, undefined, 800)}
+              {iFrag(I.unidirectional2, undefined, 800)}
+              {iFrag(I.unidirectional3, undefined, 500)}
+            </div>
+          </>
+        )
+      ),
+    ]),
+    VerticalSlide([
+      ContentSlide(
+        JSX(
+          <>
+            <h3>Putting it all together</h3>
+          </>
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'fp/todos-v1.h',
+          O.some([
+            [17, 21],
+            [7, 15],
+            [23, 24],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'fp/todos-v1.cpp',
+          O.some([
+            [6, 6],
+            [13, 18],
+            [17, 17],
+            [20, 22],
+            [24, 26],
+            [30, 37],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'fp/main.cpp',
+          O.some([
+            [3, 3],
+            [11, 14],
+            [15, 16],
+            [18, 20],
+            [22, 24],
+            [27, 24],
+          ])
+        )
+      ),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('Undo!')),
-      ContentSlide(codeFromFile('fp/model.cpp')),
+      ContentSlide(codeFromFile('fp/todos.cpp')),
     ]),
     VerticalSlide([
       ContentSlide(

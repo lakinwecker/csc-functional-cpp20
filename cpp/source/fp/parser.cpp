@@ -23,7 +23,8 @@ auto takeFirstWord(std::string line) -> std::tuple<std::string, std::string> {
     return std::make_tuple(firstWord, theRest);
 }
 
-auto strToSizeT(std::string const & str) -> tl::expected<size_t, std::string> {
+auto strToSizeT(std::string const & str)
+    -> tl::expected<size_t, std::string> {
     // Because many of the C++ standard library functions throw exceptions
     // we will need to manually convert these into tl::expected values
     try {
