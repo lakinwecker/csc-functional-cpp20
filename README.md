@@ -49,6 +49,7 @@ Run the apps:
 
 
 ## Resources
+- [Why isn't functional programming the norm?](https://www.youtube.com/watch?v=QyJZzq0v7Z4)
 - [Domain Modeling Made Functional - Scott Wlaschin - KanDDDinsky 2019](https://www.youtube.com/watch?v=2JB1_e5wZmU)
 - [Why Functional Programming matters](https://www.cse.chalmers.se/~rjmh/Papers/whyfp.pdf)
 - [Grokking simplicity](https://www.manning.com/books/grokking-simplicity)
@@ -56,6 +57,7 @@ Run the apps:
 - [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala)
 - [What if the user was a function - Slides](https://speakerdeck.com/staltz/what-if-the-user-was-a-function)
 - [What if he user was a function - Video](https://youtu.be/1zj7M1LnJV4?feature=shared)
+- [The introduction to Reactive Programming you've been missing - Andre Staltz](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 - [WalletFox Ranges Quick Reference](https://www.walletfox.com/course/quickref_range_v3.php)
 - [Ranges-v3](https://github.com/ericniebler/range-v3)
 - [immer](https://github.com/arximboldi/immer)
@@ -63,3 +65,4 @@ Run the apps:
 - [tl-expected](https://github.com/TartanLlama/expected)
 - [tl-optional](https://github.com/TartanLlama/optional)
 - [A large list of resources for Functional Programming in C++](https://github.com/graninas/cpp_functional_programming)
+- [RxMarbles - Visual Examples of stream operations](https://rxmarbles.com)
