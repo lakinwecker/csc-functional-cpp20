@@ -21,6 +21,6 @@ struct Model {
 };
 
 auto update(Model model, Action action) -> Model;
-auto view(Model model) -> void;
+auto view(Model model) -> std::string;
 
 }

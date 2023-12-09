@@ -687,12 +687,12 @@ int main() {
         codeFromFile(
           'fp/todos-v1.cpp',
           O.some([
-            [6, 6],
-            [13, 18],
-            [17, 17],
-            [20, 22],
-            [24, 26],
-            [30, 37],
+            [7, 7],
+            [14, 19],
+            [18, 18],
+            [21, 23],
+            [25, 27],
+            [31, 46],
           ])
         )
       ),
@@ -703,16 +703,38 @@ int main() {
             [3, 3],
             [11, 14],
             [15, 16],
-            [18, 20],
-            [22, 24],
-            [27, 24],
+            [18, 25],
+            [27, 29],
+            [31, 46],
           ])
         )
       ),
     ]),
     VerticalSlide([
       ContentSlide(SubTitleContent('Undo!')),
-      ContentSlide(codeFromFile('fp/todos.cpp')),
+      ContentSlide(
+        codeFromFile(
+          'fp/todos.h',
+          O.some([
+            [10, 10],
+            [16, 16],
+            [23, 27],
+          ])
+        )
+      ),
+      ContentSlide(
+        codeFromFile(
+          'fp/todos.cpp',
+          O.some([
+            [8, 12],
+            [14, 22],
+            [24, 29],
+            [42, 44],
+            [59, 62],
+          ])
+        )
+      ),
+      ContentSlide(SubTitleContent('Demo!')),
     ]),
     VerticalSlide([
       ContentSlide(

@@ -1,6 +1,7 @@
 #include "todos.h"
 #include <lager/util.hpp>
 #include <iostream>
+#include <format>
 #include <range/v3/all.hpp>
 
 
@@ -62,12 +63,19 @@ auto todo::update(Model model, Action action) -> Model {
     }, action);
 }
 
-auto todo::view(Model model) -> void {
-    std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout << "-----------------------------------------" << std::endl;
-    std::cout << "TODO Manager 0.1 (my little pony edition)" << std::endl;
-    for (auto const & [id, todo] : ranges::views::enumerate(model.todos)) {
-        std::cout << " * (id: " << id << ") " << todo.name << std::endl;
-    }
+auto todo::view(Model model) -> std::string {
+    std::string header = R"output(
+-----------------------------------------
+TODO Manager 0.1 (my little pony edition)
+
+)output";
+    std::string todoFormat =
+        ranges::views::enumerate(model.todos)
+        | ranges::views::transform([](auto args) -> std::string {
+            auto [id, todo] = args;
+            return std::format(" * (id: {}) {}", id, todo.name);
+        })
+        | ranges::views::join("\n")
+        | ranges::to<std::string>;
+    return header+todoFormat;
 }

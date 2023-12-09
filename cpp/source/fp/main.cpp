@@ -13,11 +13,16 @@ int main() {
         lager::with_manual_event_loop{});
 
     // Show the initial view
-    todo::view(store.get());
+    std::cout << todo::view(store.get()) << std::endl;
 
     // Tell lager to watch the store and when it changes
     // to update the view
-    watch(store, todo::view);
+    watch(
+        store,
+        [](auto model) {
+            std::cout << todo::view(model) << std::endl;
+        }
+    );
 
     // Get a line of text
     std::string line;
@@ -37,6 +42,7 @@ int main() {
                     // If the action parsing failed, print the error
                     std::cout << "Invalid command: " << err << std::endl;
                 }
+
             );
     }
 }
