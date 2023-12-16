@@ -73,10 +73,6 @@ export const ContentRenderer = (content: Content) => {
           </pre>
         </>
       )
-    case ContentType.SubTitle:
-      return <h3>{content.title}</h3>
-    case ContentType.Paragraph:
-      return <p>{content.content}</p>
     case ContentType.JSX:
       return content.content
     case ContentType.Title:

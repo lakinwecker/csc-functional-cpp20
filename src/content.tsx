@@ -11,8 +11,6 @@ import {
   FragmentsSlide,
   VerticalSlide,
   Slide,
-  TitleContent,
-  SubTitleContent,
   JSX,
   Fragment,
   Code,
@@ -27,7 +25,7 @@ export const CodeFromFileOrError =
   (f: (codeFile: CodeFile) => CodeFromFile): Content =>
     F.pipe(
       R.lookup(name)(files),
-      O.fold<CodeFile, Content>(() => TitleContent(`ERROR loading: ${name}`), f)
+      O.fold<CodeFile, Content>(() => JSX(<h2>loading: ${name}</h2>), f)
     )
 
 const iFrag = (
@@ -157,7 +155,7 @@ export const fpcpp20Slides = (
       ),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('What is Functional Programming?')),
+      ContentSlide(JSX(<h3>What is Functional Programming?</h3>)),
       ContentSlide(
         Code(
           "We're not playing code golf!",
@@ -171,7 +169,7 @@ quicksort (p:xs) =
 `
         )
       ),
-      FragmentsSlide(SubTitleContent('Functional Programming Style'), [
+      FragmentsSlide(JSX(<h3>Functional Programming Style</h3>), [
         Fragment(
           JSX(
             <>
@@ -209,7 +207,7 @@ quicksort (p:xs) =
       ),
       mutationSlide,
       immutabilitySlide,
-      FragmentsSlide(SubTitleContent('Functional Programming Style in C++'), [
+      FragmentsSlide(JSX(<h3>Functional Programming Style in C++</h3>), [
         Fragment(
           JSX(
             <>
@@ -235,8 +233,8 @@ quicksort (p:xs) =
       ]),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent("Let's build a CLI TODO app")),
-      FragmentsSlide(SubTitleContent('TODO app requirements (basic CRUD)'), [
+      ContentSlide(JSX(<h3>Let's build a CLI TODO app</h3>)),
+      FragmentsSlide(JSX(<h3>TODO app requirements (basic CRUD)</h3>), [
         Fragment(JSX(<p>Create Todo</p>)),
         Fragment(JSX(<p>Read Todo</p>)),
         Fragment(JSX(<p>Update Todo</p>)),
@@ -254,7 +252,7 @@ quicksort (p:xs) =
       ]),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('In the OOP style')),
+      ContentSlide(JSX(<h3>In the OOP style</h3>)),
       ContentSlide(codeFromFile('oop/main.cpp')),
       ContentSlide(
         codeFromFile(
@@ -343,10 +341,10 @@ quicksort (p:xs) =
         )
       ),
     ]),
-    ContentSlide(SubTitleContent('In the FP style')),
+    ContentSlide(JSX(<h3>In the FP style</h3>)),
     VerticalSlide([
-      ContentSlide(SubTitleContent('Syntax Preliminaries')),
-      FragmentsSlide(SubTitleContent('Traditional Return Types'), [
+      ContentSlide(JSX(<h3>Syntax Preliminaries</h3>)),
+      FragmentsSlide(JSX(<h3>Traditional Return Types</h3>), [
         Fragment(
           Code(
             '',
@@ -376,7 +374,7 @@ int square(int x) { return x * x; }
           </>
         )
       ),
-      FragmentsSlide(SubTitleContent('Trailing Return Types'), [
+      FragmentsSlide(JSX(<h3>Trailing Return Types</h3>), [
         Fragment(
           Code(
             '',
@@ -394,7 +392,7 @@ auto square(int x) -> int { return x * x; }
           )
         ),
       ]),
-      FragmentsSlide(SubTitleContent('Function Syntax'), [
+      FragmentsSlide(JSX(<h3>Function Syntax</h3>), [
         Fragment(
           Code(
             '',
@@ -414,8 +412,8 @@ auto add2 = [](int x) -> int { return x + 2; };
       ]),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('Ranges-v3')),
-      FragmentsSlide(SubTitleContent('Pipes Again!'), [
+      ContentSlide(JSX(<h3>Ranges-v3</h3>)),
+      FragmentsSlide(JSX(<h3>Pipes Again!</h3>), [
         Fragment(JSX(<img src={I.pipes6.toString()} width={500} alt="" />)),
         Fragment(JSX(<img src={I.pipes7.toString()} width={500} alt="" />)),
         Fragment(
@@ -436,7 +434,7 @@ cat code.cpp | grep "#include" | wc --lines
           )
         ),
       ]),
-      FragmentsSlide(SubTitleContent('std::ranges Pipes'), [
+      FragmentsSlide(JSX(<h3>std::ranges Pipes</h3>), [
         Fragment(
           Code(
             'C++20 ranges',
@@ -518,7 +516,7 @@ int main() {
       ContentSlide(codeFromFile('fp/parser.cpp', O.some([[15, 21]]))),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('std::variant / std::visit')),
+      ContentSlide(JSX(<h3>std::variant / std::visit</h3>)),
       ContentSlide(
         Code(
           '',
@@ -568,7 +566,7 @@ int main() {
       ),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('tl::expected')),
+      ContentSlide(JSX(<h3>tl::expected</h3>)),
       ContentSlide(
         codeFromFile(
           'fp/parser.h',
@@ -737,7 +735,7 @@ int main() {
       ),
     ]),
     VerticalSlide([
-      ContentSlide(SubTitleContent('Undo!')),
+      ContentSlide(JSX(<h3>Undo!</h3>)),
       ContentSlide(
         codeFromFile(
           'fp/todos.h',
@@ -760,7 +758,7 @@ int main() {
           ])
         )
       ),
-      ContentSlide(SubTitleContent('Demo!')),
+      ContentSlide(JSX(<h3>Demo!</h3>)),
     ]),
     VerticalSlide([
       ContentSlide(

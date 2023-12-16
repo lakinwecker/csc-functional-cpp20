@@ -4,47 +4,12 @@ import * as O from 'fp-ts/Option'
 
 export enum ContentType {
   Title,
-  SubTitle,
-  Paragraph,
   Code,
   CodeFromFile,
   JSX,
   Fragment,
 }
-export type Content =
-  | TitleContent
-  | SubTitleContent
-  | ParagraphContent
-  | Code
-  | JSX
-  | CodeFromFile
-
-export type TitleContent = {
-  type: ContentType.Title
-  title: string
-}
-export const TitleContent = (title: string): TitleContent => ({
-  title,
-  type: ContentType.Title,
-})
-
-export type SubTitleContent = {
-  type: ContentType.SubTitle
-  title: string
-}
-export const SubTitleContent = (title: string): SubTitleContent => ({
-  title,
-  type: ContentType.SubTitle,
-})
-
-export type ParagraphContent = {
-  type: ContentType.Paragraph
-  content: string
-}
-export const ParagraphContent = (content: string): ParagraphContent => ({
-  content,
-  type: ContentType.Paragraph,
-})
+export type Content = Code | JSX | CodeFromFile
 
 export type JSX = {
   type: ContentType.JSX
