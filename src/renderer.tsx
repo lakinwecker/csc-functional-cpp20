@@ -1,8 +1,9 @@
 import * as F from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
-import { orEmpty } from './fp'
-
 import React from 'react'
+
+import { orEmpty } from './fp'
+import * as I from './codefiles'
 
 import {
   Slide,
@@ -27,14 +28,29 @@ const isTypescript = (filename: string) =>
 
 const editCodeLink = (filename: string, code: string) =>
   isTypescript(filename) ? (
-    <a
-      target="_blank"
-      href={`https://www.typescriptlang.org/play?#code/${LZString.compressToEncodedURIComponent(
-        code
-      )}`}
+    <p
+      style={{
+        textAlign: 'center',
+        fontSize: '12pt',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
     >
-      Edit Code
-    </a>
+      <a
+        target="_blank"
+        href={`https://www.typescriptlang.org/play?#code/${LZString.compressToEncodedURIComponent(
+          code
+        )}`}
+      >
+        Edit Code
+      </a>{' '}
+      <img
+        style={{ margin: '2px 5px' }}
+        height="16"
+        width="16"
+        src={I.tsLogo.toString()}
+      />
+    </p>
   ) : (
     <></>
   )

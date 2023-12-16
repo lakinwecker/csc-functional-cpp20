@@ -69,6 +69,7 @@ export const designPatternsCover = new URL(
 )
 
 export const cppLogo = new URL(`../static/cpp-logo.svg`, import.meta.url)
+export const tsLogo = new URL(`../static/ts-logo.svg`, import.meta.url)
 export const qrCode = new URL(`../static/qrcode.png`, import.meta.url)
 export const pipes0 = new URL(`../static/pipes-0.png`, import.meta.url)
 export const pipes1 = new URL(`../static/pipes-1.png`, import.meta.url)

@@ -34,6 +34,8 @@ export const fpSlides = (
       name
     )((codeFile) => CodeFromFile(codeFile, O.none, focusLines))
   return E.right([
+    ContentSlide(JSX(<h1>Presentations with integrated code</h1>)),
+    ContentSlide(JSX(<h1>Loading Code from Local files</h1>)),
     ContentSlide(
       codeFromFile(
         'ts/fp.ts',
@@ -45,6 +47,24 @@ export const fpSlides = (
           [13, 13],
           [15, 16],
         ])
+      )
+    ),
+    ContentSlide(
+      JSX(
+        <>
+          <h3>Loading code from codesandbox.io</h3>
+          <iframe
+            src="https://codesandbox.io/embed/new?codemirror=1"
+            style={{
+              width: '100%',
+              height: '500px',
+              border: '0',
+              overflow: 'hidden',
+            }}
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+          ></iframe>
+        </>
       )
     ),
   ])
