@@ -3,7 +3,7 @@
   height: 100vh;
 }
 body {
-  background-color: #282a36;
+  background-color: #fdf6e3;
 }
 header {
   position: absolute;
@@ -90,13 +90,13 @@ footer img.github {
   margin: auto;
   width: 480px;
   height: 480px;
-  border: 10px dotted #fff;
+  border: 10px dotted #586e75;
   border-style: solid solid dotted dotted;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  animation: rotation 2s linear infinite;
+  animation: rotation 8s linear infinite;
 }
 .loader::after {
   content: '';
@@ -107,12 +107,12 @@ footer img.github {
   top: 0;
   bottom: 0;
   margin: auto;
-  border: 10px dotted #ff3d00;
+  border: 10px dotted #859900;
   border-style: solid solid dotted;
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  animation: rotationBack 1s linear infinite;
+  animation: rotationBack 6s linear infinite;
   transform-origin: center center;
 }
 

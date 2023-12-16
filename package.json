@@ -7,7 +7,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "compile": "tsc",
-        "run:dev": "parcel --host 0.0.0.0 src/**/*",
+        "run:cpp": "parcel --host 0.0.0.0 src/cpp-fp.html",
+        "run:ts": "parcel --host 0.0.0.0 src/example-presentation.html",
         "qrcode": "node src/qrcode.js"
     },
     "keywords": [],
@@ -15,11 +16,13 @@
     "license": "ISC",
     "devDependencies": {
         "@parcel/config-default": "^2.10.3",
+        "@parcel/packager-ts": "2.10.3",
         "@parcel/transformer-raw": "^2.10.3",
         "@tsconfig/strictest": "^2.0.2",
         "@types/node": "^20.10.4",
         "@types/react": "^18.2.42",
         "@types/react-dom": "^18.2.17",
+        "@types/reveal": "^4.2.0",
         "assert": "^2.1.0",
         "browserify-zlib": "^0.2.0",
         "buffer": "^6.0.3",
@@ -39,8 +42,8 @@
         "util": "^0.12.5"
     },
     "dependencies": {
-        "@types/reveal": "^4.2.0",
         "axios": "^1.6.2",
+        "codesandbox": "^2.2.3",
         "fp-ts": "^2.16.1",
         "highlight.js": "^11.9.0",
         "io-ts": "^2.2.21",

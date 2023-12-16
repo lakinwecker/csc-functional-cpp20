@@ -1,6 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "*.{cpp,h,md}": ["@parcel/transformer-raw"]
+    "cpp/*.{cpp,h}": ["@parcel/transformer-raw"],
+    "ts/*.{ts,tsx}": ["@parcel/transformer-raw"]
   }
 }

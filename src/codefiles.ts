@@ -54,6 +54,10 @@ export const CodeFileSources = [
     title: 'fp/todos-v1.h',
     url: new URL(`../cpp/source/fp/todos-v1.h`, import.meta.url),
   },
+  {
+    title: 'ts/fp.ts',
+    url: new URL(`../ts/fp.ts`, import.meta.url),
+  },
 ]
 export const mementoPatternJpg = new URL(
   `../static/memento.jpg`,
@@ -63,6 +67,7 @@ export const designPatternsCover = new URL(
   `../static/design-patterns-cover.jpg`,
   import.meta.url
 )
+
 export const cppLogo = new URL(`../static/cpp-logo.svg`, import.meta.url)
 export const qrCode = new URL(`../static/qrcode.png`, import.meta.url)
 export const pipes0 = new URL(`../static/pipes-0.png`, import.meta.url)

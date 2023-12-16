@@ -19,6 +19,7 @@ import {
 } from './slides'
 
 import * as I from './codefiles'
+// import LZString from 'lz-string'
 
 export const CodeFromFileOrError =
   (files: Record<string, CodeFile>, name: string) =>

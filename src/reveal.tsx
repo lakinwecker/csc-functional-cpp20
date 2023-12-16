@@ -1,4 +1,3 @@
-// TODO: rename this file.
 import React from 'react'
 import Reveal from 'reveal.js'
 import Markdown from 'reveal.js/plugin/markdown/markdown.js'
@@ -12,7 +11,7 @@ import 'highlight.js/styles/intellij-light.css'
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight.js'
 import { Slide, Renderer } from './slides'
 
-export const FpCPP20 = ({
+export const Presentation = ({
   slides,
   renderer,
 }: {
