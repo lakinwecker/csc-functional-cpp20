@@ -74,19 +74,5 @@ export const fpSlides = (
         </>
       )
     ),
-
-    ContentSlide(
-      codeFromFile(
-        'ts/slides.tsx',
-        O.some([
-          [1, 2],
-          [4, 4],
-          [6, 6],
-          [8, 11],
-          [13, 13],
-          [15, 16],
-        ])
-      )
-    ),
   ])
 }

@@ -7,8 +7,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "compile": "tsc",
-        "run:cpp": "parcel --host 0.0.0.0 src/cpp-fp.html",
-        "run:ts": "parcel --host 0.0.0.0 src/example-presentation.html",
+        "run:cpp": "parcel --host 0.0.0.0 --port 1234 src/cpp-fp.html",
+        "run:ts": "parcel --host 0.0.0.0 --port 1235 src/example-presentation.html",
         "qrcode": "node src/qrcode.js"
     },
     "keywords": [],

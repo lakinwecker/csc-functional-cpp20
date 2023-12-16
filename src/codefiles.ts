@@ -58,6 +58,10 @@ export const CodeFileSources = [
     title: 'ts/fp.ts',
     url: new URL(`../ts/fp.ts`, import.meta.url),
   },
+  {
+    title: 'ts/slides.tsx',
+    url: new URL(`../ts/slides.tsx`, import.meta.url),
+  },
 ]
 export const mementoPatternJpg = new URL(
   `../static/memento.jpg`,
