@@ -75,9 +75,6 @@ export const ContentRenderer = (content: Content) => {
       )
     case ContentType.JSX:
       return content.content
-    case ContentType.Title:
-    default:
-      return <h2>{content.title}</h2>
   }
 }
 
