@@ -13,4 +13,4 @@ ports:
       name: Presentation
       description: Presentation Preview
       visibility: private
-      protocol: https
+      protocol: http
