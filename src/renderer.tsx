@@ -4,7 +4,6 @@ import React from 'react'
 
 import { orEmpty } from './fp'
 import * as I from './codefiles'
-import CodeSandboxer from 'react-codesandboxer'
 
 import {
   Slide,
@@ -22,21 +21,6 @@ export const SlideErrorRenderer = (error: String) => (
     <p>Error loading slides</p>
     <h1>{error}</h1>
   </section>
-)
-
-const Sandboxer = ({ examplePath }: { examplePath: string }) => (
-  <CodeSandboxer
-    examplePath={examplePath}
-    gitInfo={{
-      account: 'lakinwecker',
-      repository: 'csc-functional-cpp20',
-      host: 'github',
-      branch: 'typescript-play-support',
-    }}
-    template="typescript"
-  >
-    {() => <button type="submit">Upload to CodeSandbox</button>}
-  </CodeSandboxer>
 )
 
 const isTypescript = (filename: string) =>
@@ -66,7 +50,6 @@ const editCodeLink = (filename: string, code: string) =>
         width="16"
         src={I.tsLogo.toString()}
       />
-      <Sandboxer examplePath={filename} />
     </p>
   ) : (
     <></>
